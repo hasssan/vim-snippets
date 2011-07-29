@@ -256,7 +256,7 @@ snippet this
 	$this->${1:model/controller}->${2:method}(${3;array});${4}
 # Model Class
 snippet classm
-	<?php
+	<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	/*
 	 * ${1:Describe the model's purpose}
 	 */
@@ -270,7 +270,7 @@ snippet classm
 		${3:// Code...}
 	}
 snippet classc
-	<?php
+	<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	/*
 	 * ${1:Describe the controller's purpose}
 	 */
