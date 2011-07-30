@@ -341,7 +341,7 @@ snippet fhidden
 	<?php echo form_hidden('${1:name}', ${2:array}); ?>${3}
 # Input
 snippet finput
-	<?php echo form_input('${1:array}', set_value('${2:name}')); ?>${3}
+	<?php echo form_input('${1:array}', '${2:name}'); ?>${3}
 # Password
 snippet fpass
 	<?php echo form_password('${1:array}', set_value('${2:name}')); ?>${3}
