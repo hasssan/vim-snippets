@@ -344,16 +344,16 @@ snippet finput
 	<?php echo form_input('${1:array}', '${2:name}'); ?>${3}
 # Password
 snippet fpass
-	<?php echo form_password('${1:array}', set_value('${2:name}')); ?>${3}
+	<?php echo form_password('${1:array}', '${2:name}'); ?>${3}
 # Upload
 snippet fupload
-	<?php echo form_upload('${1:array}', set_value('${2:name}')); ?>${3}
+	<?php echo form_upload('${1:array}', '${2:name}'); ?>${3}
 # Text area
 snippet ftext
-	<?php echo form_textarea('${1:array}', set_value('${2:name}')); ?>${3}
+	<?php echo form_textarea('${1:array}', '${2:name}'); ?>${3}
 # Drop-down
 snippet fdrop
-	<?php echo form_dropdown('${1:name}',${2:array}, $this->input->post('${1}')); ?>${3}
+	<?php echo form_dropdown('${1:name}',${2:array}); ?>${3}
 # Checkbox
 snippet fcheck
 	<?php echo form_checkbox($${1:array}['${2:key}'], '', set_checkbox('${3}[]', '${4}')); ?>${5}
