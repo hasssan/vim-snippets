@@ -356,10 +356,10 @@ snippet fdrop
 	<?php echo form_dropdown('${1:name}',${2:array}, $this->input->post('${1}')); ?>${3}
 # Checkbox
 snippet fcheck
-	<?php echo form_checkbox($${1:array}['${2:key}'], '', set_checkbox('${1}[]', '${2}')); ?>${3}
+	<?php echo form_checkbox($${1:array}['${2:key}'], '', set_checkbox('${3}[]', '${4}')); ?>${5}
 # Radio button
 snippet fradio
-	<?php echo form_radio($${1:array}['${2:key}'], '', set_radio('${1}[]', '${2}')); ?>${3}
+	<?php echo form_radio($${1:array}['${2:key}'], '', set_radio('${3}[]', '${4}')); ?>${5}
 # Form submit
 snippet fsubmit
 	<?php echo form_submit('${1:name}', '${2:value}'); ?>${3}
