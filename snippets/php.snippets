@@ -46,8 +46,9 @@ snippet doc_cp
 	 * ${1:undocumented class}
 	 *
 	 * @package ${2:default}
-	 * @author ${3:`g:snips_author`}
-	 */${4}
+	 * @subpackage ${3:default}
+	 * @author ${4:`g:snips_author`}
+	 */${5}
 # Class Variable - post doc
 snippet doc_vp
 	/**
@@ -68,11 +69,13 @@ snippet doc_c
 	/**
 	 * ${3:undocumented class}
 	 *
-	 * @packaged ${4:default}
-	 * @author ${5:`g:snips_author`}
+	 * @package ${4:default}
+	 * @subpackage ${5:default}
+	 * @author ${6:`g:snips_author`}
 	 */
 	${1:}class ${2:}
-	{${6}
+	{
+		${7}
 	} // END $1class $2
 # Constant Definition - post doc
 snippet doc_dp
@@ -124,9 +127,6 @@ snippet doc_h
 	 * @package ${5:default}
 	 */
 	
-	/**
-	 * Define DocBlock
-	 */
 # Interface
 snippet doc_i
 	/**
@@ -254,12 +254,12 @@ snippet pdd
 	echo '<pre>'; var_dump(${1}); echo '</pre>'; die(${2:});
 snippet vd
 	var_dump(${1});
-
+snippet vdd
+	var_dump(${1}); die(${2:});
 snippet http_redirect
 	header ("HTTP/1.1 301 Moved Permanently"); 
 	header ("Location: ".URL); 
 	exit();
-
 ### codeigniter 2.x snippets
 # Generic php basepath
 snippet phpci
@@ -457,3 +457,24 @@ snippet datav
 	$data['${1:name}'] = ${2};
 snippet tdatav
 	$this->data['${1:name}'] = ${2};
+# Getters & Setters
+snippet getset
+	/**
+	 * Gets the value of ${1:}
+	 *
+	 * @return ${2}
+	 */
+	function get$1()
+	{
+		return $this->_$1;
+	}
+
+	/**
+	 * Sets the value of $1
+	 *
+	 * @param mixed $$1 ${3}
+	 */
+	function set$1($$1)
+	{
+		$this->_$1 = $$1;
+	}
