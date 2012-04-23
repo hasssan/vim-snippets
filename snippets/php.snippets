@@ -6,6 +6,8 @@ snippet phpil
 	<?php ${1} ?>
 snippet ec
 	echo "${1:string}"${2};
+snippet ethis
+	<?php echo $this->${1:something}; ?>
 snippet inc
 	include '${1:file}';${2}
 snippet inc1
@@ -173,6 +175,10 @@ snippet if
 	{
 		${2:// code...}
 	}
+snippet ifil
+	<?php if (${1:/* condition */}): ?>
+		${2:<!-- code... -->}
+	<?php endif; ?>
 snippet ife
 	if (${1:/* condition */}) 
 	{
@@ -180,6 +186,13 @@ snippet ife
 	} else {
 		${3:// code...}
 	}
+	${4}
+snippet ifeil
+	<?php if (${1:/* condition */}): ?>
+		${2:<!-- html... -->}
+	<?php else: ?>
+		${3:<!-- html... -->}
+	<?php endif; ?>
 	${4}
 snippet else
 	else 
@@ -219,11 +232,19 @@ snippet foreach
 	{
 		${3:// code...}
 	}
+snippet foreachil
+	<?php foreach ($${1:variable} as $${2:value}): ?>
+		${3:<!-- html... -->}
+	<?php endforeach; ?>
 snippet foreachk
 	foreach ($${1:variable} as $${2:key} => $${3:value}) 
 	{
 		${4:// code...}
 	}
+snippet foreachkil
+	<?php foreach ($${1:variable} as $${2:key} => $${3:value}): ?>
+		${4:<!-- html... -->}
+	<?php endforeach; ?>
 snippet fun
 	${1:public }function ${2:FunctionName}(${3})
 	{
@@ -478,3 +499,7 @@ snippet getset
 	{
 		$this->_$1 = $$1;
 	}
+snippet rett
+	return true;
+snippet retf
+	return false;
