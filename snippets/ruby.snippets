@@ -589,6 +589,8 @@ snippet bf
 	before_filter :${1:method}
 snippet bt
 	belongs_to :${1:association}
+snippet btp
+	belongs_to :${1:association}, :polymorphic => true${2}
 snippet crw
 	cattr_accessor :${1:attr_names}
 snippet defcreate
@@ -678,6 +680,8 @@ snippet hmt
 	has_many :${1:object}, :through => :${2:object}
 snippet ho
 	has_one :${1:object}
+snippet hod
+	has_one :${1:object}, dependent: :${2:destroy}
 snippet i18
 	I18n.t('${1:type.key}')${2}
 snippet ist
@@ -843,26 +847,26 @@ snippet tcts
 snippet tctss
 	t.timestamps
 	${1}
-snippet va
+snippet va validates_associated
 	validates_associated :${1:attribute}
-snippet vao
-	validates_acceptance_of :${1:terms}
+snippet va validates .., :acceptance => true
+	validates :${1:terms}, :acceptance => true
 snippet vc
-	validates_confirmation_of :${1:attribute}
+	validates :${1:attribute}, :confirmation => true
 snippet ve
-	validates_exclusion_of :${1:attribute}, :in => ${2:%w( mov avi )}
+	validates :${1:attribute}, :exclusion => { :in => ${2:%w( mov avi )} }
 snippet vf
-	validates_format_of :${1:attribute}, :with => /${2:regex}/
+	validates :${1:attribute}, :format => { :with => /${2:regex}/ }
 snippet vi
-	validates_inclusion_of :${1:attribute}, :in => %w(${2: mov avi })
+	validates :${1:attribute}, :inclusion => { :in => %w(${2: mov avi }) }
 snippet vl
-	validates_length_of :${1:attribute}, :within => ${2:3}..${3:20}
+	validates :${1:attribute}, :length => { :in => ${2:3}..${3:20} }
 snippet vn
-	validates_numericality_of :${1:attribute}
-snippet vpo
-	validates_presence_of :${1:attribute}
+	validates :${1:attribute}, :numericality => true
+snippet vp
+	validates :${1:attribute}, :presence => true
 snippet vu
-	validates_uniqueness_of :${1:attribute}
+	validates :${1:attribute}, :uniqueness => true
 snippet wants
 	wants.${1:js|xml|html} { ${2} }
 snippet wc
@@ -890,22 +894,27 @@ snippet mrnc
 	rename_column :${1:table_name}, :${2:old_column_name}, :${3:new_column_name}
 snippet mcc
 	change_column :${1:table}, :${2:column}, :${3:type}
-snippet mccc
-	t.column :${1:title}, :${2:string}
+snippet mnc
+	t.${1:string} :${2:title}${3:, null: false}${4}
 snippet mct
 	create_table :${1:table_name} do |t|
-		t.column :${2:name}, :${3:type}
+		${2}
 	end
-snippet migration
+snippet migration class .. < ActiveRecord::Migration .. def up .. def down .. end
 	class ${1:class_name} < ActiveRecord::Migration
-		def self.up
+		def up
 			${2}
 		end
 
-		def self.down
+		def down
 		end
 	end
-
+snippet migration class .. < ActiveRecord::Migration .. def change .. end
+	class ${1:class_name} < ActiveRecord::Migration
+		def change
+			${2}
+		end
+	end
 snippet trc
 	t.remove :${1:column}
 snippet tre
@@ -913,7 +922,6 @@ snippet tre
 	${3}
 snippet tref
 	t.references :${1:model}
-
 #rspec
 snippet it
 	it "${1:spec_name}" do
@@ -944,7 +952,9 @@ snippet aft
 		${2}
 	end
 snippet let
-	let(:${1:method}) { ${2} }
+	let(:${1:object}) ${2:block}
+snippet let!
+	let!(:${1:object}) ${2:block}
 snippet subj
 	subject { ${1} }
 snippet spec
@@ -959,3 +969,5 @@ snippet shared
 	shared_examples "${1:shared examples name}" ${2}
 snippet itb
 	it_behaves_like "${1:shared examples name}"${2}
+snippet ana
+	accepts_nested_attributes_for :${1:association}

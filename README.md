@@ -5,8 +5,8 @@ Snipmate & UltiSnip Snippets
 
 This repository contains snippets files for various programming languages.
 
-It is community-maintained and many people have contributed snippet files and other
-improvements already.
+It is community-maintained and many people have contributed snippet files and
+other improvements already.
 
 Contents
 ========
@@ -62,6 +62,12 @@ so that all users can benefit from them.  People can list their snippet reposito
 
 Installation using VAM: "github:rbonvall/snipmate-snippets-bib"
 
+
+## If you believe in the success of vim-snipmate
+then you may also want to have a look at [vim-git-wiki](http://github.com/MarcWeber/vim-git-wiki).
+If you contribute to this git based wiki editable by Vim we have a chance
+of making it official at www.vim.org.
+
 Historical notes
 ================
 
@@ -69,6 +75,45 @@ Historical notes
 unfortunately abandoned the project. [Rok Garbas][3] is now maintaining a
 [fork][4] of the project in hopes of improving the existing code base.
 
+Versions / dialects / ..
+========================
+There are some issues, such as newer language versions may require other
+snippets than older. If this exists we currently recommend doing this:
+
+add snippets/ruby.snippets (common snippets)
+add snippets/ruby-1.8.snippets (1.8 only)
+add snippets/ruby-1.9.snippets (1.9 only)
+
+then configure github.com/garbas/vim-snipmate this way:
+
+
+```vim
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails,ruby-1.9'
+```
+
+or github.com/MarcWeber/UltiSnips this way:
+
+
+```vim
+let g:UltiSnips = {}
+
+let g:UltiSnips.snipmate_ft_filter = {
+            \ 'default' : {'filetypes': ["FILETYPE"] },
+            \ 'ruby'    : {'filetypes': ["ruby", "ruby-rails", "ruby-1.9"] },
+```
+
+If it happens that you work on a project requiring ruby-1.8 snippets instead,
+consider using vim-addon-local-vimrc and override the filetypes.
+
+Well - of course it may not make sense to create a new file for each
+ruby-library-version triplet. Sometimes postfixing a name such as
+
+    migrate_lib_20_down
+    migrate_lib_20_up
+
+will do it then if syntax has changed.
 
 Language maintainers
 --------------------
@@ -76,12 +121,18 @@ Language maintainers
 No one can really be proficient in all programming languages. If you would like
 to maintain snippets for a language, please get in touch.
 
+Notes: People are interested in snippets - and their interest may stop again
+at will. So its ok if people maintain a language only for a short period of
+time - or jump in and get things done - don't let the flow stop :)
+vim-snippets is not like the "linux kernel".
+
 * Python - [honza](http://github.com/honza)
 * Javascript - [honza](http://github.com/honza)
 * HTML Django - [honza](http://github.com/honza)
 * Markdown - [honza](http://github.com/honza)
 * Ruby - [taq](http://github.com/taq)
 * PHP - [chrisyue](http://github.com/chrisyue)
+* Scala - [gorodinskiy](https://github.com/gorodinskiy)
 
 Contributing notes
 ------------------
